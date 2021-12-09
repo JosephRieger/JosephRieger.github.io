@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Task 3 Breaching the Control Room</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">Task 3 Breaching the Control Room</h1><br/><strong>Now that we've gained access to our target system, let's see if we can find a way to escalate. To start, let's scout around the system to see if we can find anything of interest.<br /><br /><br /><br />                                                                                        <br /> When enumerating a machine, it's  often useful to look at what the user was last doing. Look around the  machine and see if you can find the CVE which was researched on this  server. What CVE was it?<br /></strong>    <br />     Going into the browser history we can see that CVE-2019-1388 was searched 2 weeks ago<br />    <br />  <strong>  Answer: CVE-2019-1388<br /> <br /> <br /> Looks like an executable file is necessary for exploitation of this vulnerability and the user didn't really clean up very well after testing it. What is the name of this executable?<br /></strong>     <br />     hhupd is sitting on the desktop<br /><br />   <strong>  Answer: hhupd<br /> <br /> <br /> Research vulnerability and how to exploit it. Exploit it now to gain an elevated terminal!<br /></strong>  <br />     <a href="https://www.zerodayinitiative.com/blog/2019/11/19/thanksgiving-treat-easy-as-pie-windows-7-secure-desktop-escalation-of-privilege">https://www.zerodayinitiative.com/blog/2019/11/19/thanksgiving-treat-easy-as-pie-windows-7-secure-desktop-escalation-of-privilege</a><br />     <br />     In the ‘Save webpage’ dialog enter C:\Windows\System32\*.* into the ‘filename’ field and search for ‘cmd’. Then right-click it and choose ‘run’.<strong><br />                     <br />                     <br />Now that we've spawned a terminal, let's go ahead and run the command 'whoami'. What is the output of running this?  <br /><br /></strong>    <strong>Answer: nt authority\system <br /><br /><br /><br />Now that we've confirmed that we have an elevated prompt, read the contents of root.txt on the Administrator's desktop. What are the contents? Keep your terminal up after exploitation so we can use it in task four!</strong><br /><br />    Navigate to C:\Users\Administrator\Desktop<br />    type root.txt<br /><br />   <strong> Answer: THM{COIN_OPERATED_EXPLOITATION}</strong></div></body></html>

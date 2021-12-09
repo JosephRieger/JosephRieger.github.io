@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Task 3 Escalate</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">Task 3 Escalate</h1><br/><strong>Escalate privileges, learn how to upgrade shells in metasploit.<br /><br />        <br />If you haven't already, background  the previously gained shell (CTRL + Z). Research online how to convert a  shell to meterpreter shell in metasploit. What is the name of the post  module we will use? (Exact path, similar to the exploit we previously  selected) <br /></strong>• post/multi/manage/shell_to_meterpreter<br />• use post/multi/manage/shell_to_meterpreter<br />• set session 1<br />• session -i 2<strong><br /><br /><br />                                                                                        <br />Select this (use MODULE_PATH). Show options, what option are we required to change?<br /></strong>• session<strong><br /><br /><br />Set the required option, you may need to list all of the sessions to find your target here. <br /><br /><br />Run! If this doesn't work, try completing the exploit from the previous task once more.<br /><br /><br />                                                                                        <br />Once the meterpreter shell conversion completes, select that session for use.<br /><br /><br />Verify that we have escalated to NT AUTHORITY\SYSTEM. Run getsystem to confirm this. Feel free to open a dos shell via the command 'shell' and run 'whoami'. This should return that we are indeed system. Background this shell afterwards and select our meterpreter session for usage again. <br /></strong>• getuid<strong><br /><br /><br />List all of the processes running via the 'ps' command. Just because we are system doesn't mean our process is. Find a process towards the bottom of this list that is running at NT AUTHORITY\SYSTEM and write down the process id (far left column).<br /></strong>• spoolsv.exe 1300 (printer service; will restart if it crashes)<br />• could only migrate after getsystem although getuid said that I was already SYSTEM user<strong><br /><br /><br />Migrate to this process using the 'migrate PROCESS_ID' command where the process id is the one you just wrote down in the previous step. This may take several attempts, migrating processes is not very stable. If this fails, you may need to re-run the conversion process or reboot the machine and start once again. If this happens, try a different process next time. <br /></strong>• migrate 1300<strong><br /><br />                            <br />                        </strong><br /><br />                            <br />                        <br /><br />                            <br />                        <br /></div></body></html>

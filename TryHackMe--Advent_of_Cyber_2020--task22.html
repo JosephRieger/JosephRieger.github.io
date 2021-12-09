@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>task22</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">task22</h1><br/><img src="images/16-1.png" alt="images/16-1.png" /><br /><br />                                                                                        <br /><strong>What is the value of local_ch when its corresponding movl instruction is called (first if multiple)?</strong>  <br />	Asnwer: The mov instruction copies the value ‘1’ to the address of the local_ch variable.                          <br />                        <br /><strong>What is the value of eax when the imull instruction is called?</strong><br />	Asnwer: In the line afterwards the literal ‘6’ is copied into the local_8h variable.<br />				Afterwards, the value of local_ch is copied into the eax register.<br />				The values of eax (1) and and local_8h (6) are multiplied -&gt; 1*6 = 6 <br /><br /><strong>What is the value of local_4h before eax is set to 0?</strong><br />	Answer: The result of the multiplication is then copied into local_4h -&gt; 6</div></body></html>

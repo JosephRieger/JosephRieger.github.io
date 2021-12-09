@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Task 2 - Reconnaissance</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">Task 2 - Reconnaissance</h1><br/><strong>Scan the machine, how many ports are open?</strong><br /><br />    sudo nmap -A &lt;IP&gt;<br />    <br /><strong>    Answer: 2</strong><br /><br /><strong><br />What version of Apache is running?</strong><br /><br />    Answer: 2.4.29<br /><br /><strong><br />What service is running on port 22?</strong><br /><br /><strong>    Answer: SSH</strong><br /><br /><br />Find directories on the web server using the GoBuster tool.<br /><br /><br /><strong>What is the hidden directory?</strong><br /><br />    gobuster dir -u &lt;IP&gt; -w /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt<br />                                                  <br />    This reveals a couple of directories. One is called /panel/ that allows you to upload files and another is called /uploads/, which is presumably the location where the uploaded files are stored.<br />    <br /><strong>    Answer: /panel/    </strong>    </div></body></html>

@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Task 12 [Day 7] Networking The Grinch Really Did Steal Christmas</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">Task 12 [Day 7] Networking The Grinch Really Did Steal Christmas</h1><br/>                                                                                        <br />Open "pcap1.pcap" in Wireshark. What is the IP address that initiates an ICMP/ping?<br />- Filter for “icmp” and pick the first packet that sends a “Echo (ping) request”<br />Answer: 10.11.3.2<br /><br />If we only wanted to see HTTP GET requests in our "pcap1.pcap" file, what filter would we use?<br />Answer: HTTP.request.method==GET<br /><br />Now apply this filter to "pcap1.pcap" in Wireshark, what is the name of the article that the IP address "<strong>10.10.67.199</strong>" visited?  <br />1. Apply the following filter “ip.src == 10.10.67.199 &amp;&amp; http.request.method==GET” <br />2. Find the first URI that looks like a proper site. Most other files being requested are fonts and css files. These can be ignored as they are only part of the site that we are after. A proper site is most likely to be located in the /posts/ subfolder.<br />Answer: reindeer-of-the-week<br /><br />Let's begin analysing "pcap2.pcap". Look at the captured FTP traffic; what password was leaked during the login process?<br />1. Filter for ftp traffic and follow the packets in chronological order. <br />2. There is one packet that says “Please specify the password”<br />   1) The IP this was sent to then replies with a packet that contains the flag<br />Answer: plaintext_password_fiasco<br /><br /><br />Continuing with our analysis of "pcap2.pcap", what is the name of the protocol that is encrypted?<br />Answer: ssh<br /><br />What is on Elf McSkidy's wishlist that will be used to replace Elf McEager?<br />1. Filter for http packets as this type of traffic can give us the most clues right of the bat<br />2. We can see that somebody requested a zip-file called “christmas.zip”<br />3. This file gets sent in the next packet. This is indicated by the Content-Type of the packet. The Content-Type specifies what type of data is being transmitted. In this case the type is “application/zip”<br />4. Select this packet and navigate to the File button <br />   1) Export objects<br />   2) HTTP<br />   3) Now save christmas.zip and open “elf_mcskidy_wishlist.txt”<br /><br />Answer: Rubber ducky<br /><br />                        <br /></div></body></html>

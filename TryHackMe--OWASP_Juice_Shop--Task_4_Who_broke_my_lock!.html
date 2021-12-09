@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Task 4 Who broke my lock?!</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">Task 4 Who broke my lock?!</h1><br/><strong>Question #1: Bruteforce the Administrator account's password!</strong><br /><br />    First we intercept the login request in Burpsuite again and forward it to the intruder:<br /><br />    <img src="images/79-1.png" alt="images/79-1.png" /><br /><br />    We add a new payload marker in the password field.<br />    Next we configure the payload by loading the best1050.txt file from Seclists. Then we start the attack and filter for successful response codes<br /><br />    <img src="images/79-2.png" alt="images/79-2.png" /><br /><br />    We can see that the password ‘admin123’ worked.<br /><br />    <strong>Answer: c2110d06dc6f81c67cd8099ff0ba601241f1ac0e</strong><br /><br /><br />                                                            <br /><strong>Question #2: Reset Jim's password!</strong><br /><br />    Jim appears to be a Star Trek fan. Googling ‘Jim Star Trek’ presents us with results for James T. Kirk. This character has an older Brother ‘George Samuel Kirk’. Therefore the answer to Jim's security question is ‘Samuel’<br /><br />    <strong>Answer: 094fbc9b48e525150ba97d05b942bbf114987257</strong><br /></div></body></html>

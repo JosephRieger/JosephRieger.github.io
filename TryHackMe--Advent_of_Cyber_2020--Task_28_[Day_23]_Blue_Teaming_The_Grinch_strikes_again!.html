@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Task 28 [Day 23] Blue Teaming The Grinch strikes again!</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">Task 28 [Day 23] Blue Teaming The Grinch strikes again!</h1><br/>1. Decrypt the fake 'bitcoin address' within the ransom note. What is the plain text value?<br />	Open the ransomnote on the desktop.<br />	bm9tb3JlYmVzdGZlc3RpdmFsY29tcGFueQ== is base64 encoded<br />	<br />	Answer: nomorebestfestivalcompany<br />	<br /><br />2. At times ransomware changes the file extensions of the encrypted files. What is the file extension for each of the encrypted files?<br />	ls .. -recurse<br />	<br />	Answer: .grinch<br /><br /><br />3. What is the name of the suspicious scheduled task?<br />   Open Task Scheduler<br /><br />	Answer: opisfsdf<br /><br /><br />4. Inspect the properties of the scheduled task. What is the location of the executable that is run at login?<br />   View the properties of opidsfsdf -&gt; Actions<br /><br />	Answer: C:\Users\Administrator\Desktop\opidsfsdf.exe<br /><br /><br />5. There is another scheduled task that is related to VSS. What is the ShadowCopyVolume ID?<br />	In the Task Scheduler look at the properties of the ShadowCopyVolume task -&gt; Actions<br /><br />	Answer: {7a9eea15-0000-0000-0000-010000000000}<br /><br /><br />6. Assign the hidden partition a letter. What is the name of the hidden folder?<br /><br />	In the disk management program there's a volume named backup. Assign a drive letter to it to gain access to its contents<br />	<br />	Answer: confidential<br /><br /><br />7. Right-click and inspect the  properties for the hidden folder. Use the 'Previous Versions' tab to  restore the encrypted file that is within this hidden folder to the  previous version. What is the password within the file?<br />	<br />	Answer: m33pa55w0rdIZseecure!<br /><br /><br /><br /><br /><br /><br /><br /></div></body></html>

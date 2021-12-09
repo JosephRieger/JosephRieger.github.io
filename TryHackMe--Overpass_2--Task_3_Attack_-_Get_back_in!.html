@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Task 3 Attack - Get back in!</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">Task 3 Attack - Get back in!</h1><br/><strong> The attacker defaced the website. What message did they leave as a heading? </strong><br />    <br />    When connected to the server via a browser you are greeted by the defaced website.<br />    <br /><strong>    Answer: H4ck3d by CooctusClan</strong><br /> <br /> <br /> <strong><br /> Using the information you've found previously, hack your way back in!</strong><br />    <br /><strong>    Answer: -no answer required-</strong><br /><br /><br /><strong> What's the user flag?</strong><br /> <br />    The backdoor code shows that the used port is 2222.<br />    <br />    Login via SSH:<br />    <div class="codebox"><div class="codebox">ssh&nbsp;-p&nbsp;2222&nbsp;james@10.10.146.33</div></div><br /><br />    Then navigate through the file system. The user flag is in /home/james/user.txt<br />    <br /><strong>    Answer: thm{d119b4fa8c497ddb0525f7ad200e6567}</strong><br /><br /><strong>What's the root flag?</strong><br /><br />    There's a hidden file called .suid_bash in James' home directory.<br />    It has the SUID bit set.<br />    <br />    As explained here <a href="https://gtfobins.github.io/gtfobins/bash/#suid">https://gtfobins.github.io/gtfobins/bash/#suid</a> , we can gain root privileges by starting the binary with the -p flag.<br />    <br />    Then navigate to the /root folder and read the contents of root.txt.<br />    <br /><strong>    Answer: thm{d53b2684f169360bb9606c333873144d}</strong><br />                                                    </div></body></html>

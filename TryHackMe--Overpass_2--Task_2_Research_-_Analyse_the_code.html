@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Task 2 Research - Analyse the code</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">Task 2 Research - Analyse the code</h1><br/><strong>What's the default hash for thebackdoor?</strong><br />    <br />    Visiting <a href="https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go">https://github.com/NinjaJc01/ssh-backdoor/blob/master/main.go</a><br />    a variable named hash is initialized at the very top of the file<br />    <br /><strong>    Answer: bdd04d9bb7621687f5df9001f5098eb22bf19eac4c2c30b6f23efed4d24807277d0f8bfccb9e77659103d78c56e66d2d7d8391dfc885d0e9b68acd01fc2170e3</strong><br /><br /><br /><br /><strong>What's the hardcoded salt for the backdoor?</strong><br /><br />    The function verifyPass takes 3 arguments: hash, salt and password<br />    At the bottom of the file this function gets called in the passwordHandler function<br />    There a numeric value is passed to verifyPass as salt<br />    <br /><strong>    Answer: 1c362db832f3f864c8c2fe05f2002a05</strong><br /><br /><br /><br /><strong>What was the hash that the attacker used? - go back to the PCAP for this!</strong><br /><br />    In the log you can see that the attacker executed the backdoor with the -a flag.<br />    Looking at the code, in line 33 the flag ‘a’ is defined as the hash for the backdoor<br />    <br />    <div class="codebox"><div class="codebox">flaggy.String(&amp;hash,&nbsp;"a",&nbsp;"hash",&nbsp;"Hash&nbsp;for&nbsp;backdoor")</div></div><br /><br /><strong>    Answer:6d05358f090eea56a238af02e47d44ee5489d234810ef6240280857ec69712a3e5e370b8a41899d0196ade16c0d54327c5654019292cbfe0b5e98ad1fec71bed</strong><br /><br /><br /><br /> <strong>Crack the hash using rockyou and a cracking tool of your choice. What's the password?</strong><br /><br />    The hash is salted so that needs to be taken into account.<br />    Copy the hash into a new file, append a $-sign followed by the salt and save it.<br />    <br />    Use a tool like <a href="https://www.tunnelsup.com/hash-analyzer/">https://www.tunnelsup.com/hash-analyzer/</a> to identify the hash type.<br />    This is SHA512.<br />    <br />    To tell John the Ripper that a salt is being used we need to need to specify the format.<br />    <br />    <div class="codebox"><div class="codebox">john&nbsp;--wordlist=/usr/share/wordlists/rockyou.txt&nbsp;backdoor_hash.txt&nbsp;--format='dynamic=sha512($p.$s)'</div></div><br />    <br />    --format='dynamic'=sha512($p.$s) tells John that the salt was appended to the hash.<br />    <br /><strong>    Answer: november16    </strong><br />    </div></body></html>

